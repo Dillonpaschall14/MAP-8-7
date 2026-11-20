@@ -1,7 +1,8 @@
 import pandas as pd
 import geopandas as gpd
 import folium
-from folium.plugins import Search
+from pathlib import Path
+from branca.element import MacroElement, Template
 
 # =========================================================
 # FILE NAMES
@@ -177,13 +178,15 @@ geojson_layer.add_to(m)
 # =========================================================
 # SEARCH BAR
 # =========================================================
-Search(
-    layer=geojson_layer,
-    geom_type="Polygon",
-    search_label="ZIP Code",
-    placeholder="Search ZIP Code",
-    collapsed=False
-).add_to(m)
+# Keep the generated HTML portable by embedding the shared ZIP search script.
+zip_search = MacroElement()
+zip_search._template = Template(
+    "{% macro script(this, kwargs) %}\n"
+    + Path(__file__).with_name("zip-search.js").read_text(encoding="utf-8")
+    + "\npcgAddZipSearch(" + m.get_name() + ", " + geojson_layer.get_name() + ");\n"
+    + "{% endmacro %}"
+)
+zip_search.add_to(m)
 
 # =========================================================
 # CITY LABELS
