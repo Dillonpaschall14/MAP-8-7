@@ -68,6 +68,10 @@
             
     <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+
+<style>
+.pcg-warehouse-label {font-weight: 700; font-size: 12px; color: #991b1b; border: 1px solid #b91c1c; background: #fff; padding: 5px 8px;}
+</style>
 </head>
 <body>
     
@@ -4187,5 +4191,20 @@
             ).addTo(map_67f4ed4e36fb0e740a307e13599c8adb);
 
         
+
+// PCG warehouse address pin (from PCG's published Google Maps address link).
+var pcg_warehouse_marker = L.marker([32.9011982, -96.576295], {
+    title: "PCG Warehouse",
+    alt: "PCG Warehouse",
+    zIndexOffset: 1000,
+    icon: L.AwesomeMarkers.icon({icon: "home", prefix: "fa", markerColor: "red", iconColor: "white"})
+}).addTo(map_67f4ed4e36fb0e740a307e13599c8adb);
+pcg_warehouse_marker.bindTooltip("PCG Warehouse", {
+    permanent: true,
+    direction: "right",
+    offset: [12, -26],
+    className: "pcg-warehouse-label"
+});
+pcg_warehouse_marker.bindPopup("<strong>PCG Warehouse</strong><br>2802 Singleton St<br>Rowlett, TX 75088");
 </script>
 </html>
