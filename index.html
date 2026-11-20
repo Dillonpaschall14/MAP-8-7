@@ -131,14 +131,13 @@
         
     
             var tile_layer_dc9b06fbb832f978ddb14f2c45467214 = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
   "maxZoom": 20,
-  "maxNativeZoom": 20,
+  "maxNativeZoom": 19,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -148,26 +147,6 @@
         
     
             tile_layer_dc9b06fbb832f978ddb14f2c45467214.addTo(map_67f4ed4e36fb0e740a307e13599c8adb);
-        
-    
-            var tile_layer_e3d369da5662fa0a9ac3bc815a42b3c9 = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-                {
-  "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 1,
-}
-
-            );
-        
-    
-            tile_layer_e3d369da5662fa0a9ac3bc815a42b3c9.addTo(map_67f4ed4e36fb0e740a307e13599c8adb);
         
     
         function geo_json_38542bc4bbff268b5772f79ef03a0ce0_styler(feature) {
@@ -4191,8 +4170,7 @@
     
             var layer_control_72c91da933b9d4ec933991fc553899d5_layers = {
                 base_layers : {
-                    "Light" : tile_layer_dc9b06fbb832f978ddb14f2c45467214,
-                    "Roads" : tile_layer_e3d369da5662fa0a9ac3bc815a42b3c9,
+                    "OpenStreetMap" : tile_layer_dc9b06fbb832f978ddb14f2c45467214,
                 },
                 overlays :  {
                     "ZIPs" : geo_json_38542bc4bbff268b5772f79ef03a0ce0,
