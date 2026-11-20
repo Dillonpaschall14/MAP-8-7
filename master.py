@@ -62,8 +62,8 @@ merged_proj["side"] = merged_proj["centroid_geom"].apply(
 )
 
 merged_proj["Territory"] = merged_proj["side"].map({
-    True: "PM1 - Landry Paschall",
-    False: "PM2 - Michael Paschall"
+    True: "PM1 - Bonnie/Landry",
+    False: "PM2 - Shelby/Michael"
 })
 
 # =========================================================
@@ -80,8 +80,8 @@ michael_override_zips = {
     "75702", "75701", "75709"
 }
 
-merged_proj.loc[merged_proj["ZIP Code"].isin(landry_override_zips), "Territory"] = "PM1 - Landry Paschall"
-merged_proj.loc[merged_proj["ZIP Code"].isin(michael_override_zips), "Territory"] = "PM2 - Michael Paschall"
+merged_proj.loc[merged_proj["ZIP Code"].isin(landry_override_zips), "Territory"] = "PM1 - Bonnie/Landry"
+merged_proj.loc[merged_proj["ZIP Code"].isin(michael_override_zips), "Territory"] = "PM2 - Shelby/Michael"
 
 # =========================================================
 # CONVERT CENTROIDS BACK TO LAT/LON FOR LABELS
@@ -104,7 +104,7 @@ def get_fill_color(row):
     value = float(row["Average Property Value"])
     territory = row["Territory"]
 
-    if territory == "PM1 - Landry Paschall":
+    if territory == "PM1 - Bonnie/Landry":
         if value < 200000:
             return "#e5f5e0"
         elif value < 350000:
@@ -128,8 +128,8 @@ def get_fill_color(row):
             return "#08519c"
 
 border_colors = {
-    "PM1 - Landry Paschall": "#2ca02c",
-    "PM2 - Michael Paschall": "#1f77b4"
+    "PM1 - Bonnie/Landry": "#2ca02c",
+    "PM2 - Shelby/Michael": "#1f77b4"
 }
 
 merged_final["fillColor"] = merged_final.apply(get_fill_color, axis=1)
@@ -250,9 +250,9 @@ legend_html = """
     box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
     line-height: 1.4;
 ">
-<b>Shading by PM & Property Value</b><br><br>
+<b>Shading by Team & Property Value</b><br><br>
 
-<b style="color:#2ca02c;">Landry Paschall (Green)</b><br>
+<b style="color:#2ca02c;">Bonnie/Landry (Green)</b><br>
 <div style="margin-left:10px;">
   <i style="background:#e5f5e0;width:18px;height:12px;float:left;margin-right:6px;"></i>&lt; $200k<br>
   <i style="background:#a1d99b;width:18px;height:12px;float:left;margin-right:6px;"></i>$200k–349k<br>
@@ -261,7 +261,7 @@ legend_html = """
   <i style="background:#006d2c;width:18px;height:12px;float:left;margin-right:6px;"></i>≥ $700k<br>
 </div><br>
 
-<b style="color:#1f77b4;">Michael Paschall (Blue)</b><br>
+<b style="color:#1f77b4;">Shelby/Michael (Blue)</b><br>
 <div style="margin-left:10px;">
   <i style="background:#deebf7;width:18px;height:12px;float:left;margin-right:6px;"></i>&lt; $200k<br>
   <i style="background:#9ecae1;width:18px;height:12px;float:left;margin-right:6px;"></i>$200k–349k<br>

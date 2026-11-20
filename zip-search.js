@@ -31,7 +31,7 @@ function pcgAddZipSearch(map, zipLayer) {
         result.setAttribute('aria-live', 'polite');
         result.setAttribute('aria-atomic', 'true');
         result.style.cssText = 'margin-top:10px;';
-        result.textContent = 'Enter a ZIP to see its boundary and PM.';
+        result.textContent = 'Enter a ZIP to see its boundary and team.';
 
         function resetSelection() {
             if (selectedLayer) {
@@ -44,7 +44,7 @@ function pcgAddZipSearch(map, zipLayer) {
             resetSelection();
             result.replaceChildren();
             if (!/^\d{5}$/.test(zip)) {
-                result.textContent = showInvalid && zip ? 'Enter a valid 5-digit ZIP code.' : 'Enter a ZIP to see its boundary and PM.';
+                result.textContent = showInvalid && zip ? 'Enter a valid 5-digit ZIP code.' : 'Enter a ZIP to see its boundary and team.';
                 return;
             }
             var layer = layersByZip[zip];
@@ -63,7 +63,7 @@ function pcgAddZipSearch(map, zipLayer) {
             var pm = L.DomUtil.create('strong', '', result);
             pm.style.cssText = 'display:block;margin-top:4px;font-size:16px;';
             var territory = String(properties.Territory || '').trim();
-            pm.textContent = 'PM: ' + (territory.replace(/^PM\d+\s*-\s*/, '') || 'Not assigned');
+            pm.textContent = 'Team: ' + (territory.replace(/^PM\d+\s*-\s*/, '') || 'Not assigned');
         }
         form.addEventListener('submit', function (event) {
             event.preventDefault();
